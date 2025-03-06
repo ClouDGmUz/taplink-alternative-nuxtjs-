@@ -41,4 +41,14 @@ export default defineNuxtConfig({
       }
     }
   },
-})
+  nitro: {
+    static: true,
+    serveStatic: {
+      cacheControl: 'public, max-age=31536000'
+    }
+  },
+  experimental: {
+    payloadExtraction: true,
+    inlineSSRStyles: false
+  }
+});
