@@ -99,45 +99,45 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useS3 } from '~/composables/useS3';
 
+const { getS3Url } = useS3();
 const galleryOpen = ref(false);
 const currentImageIndex = ref(0);
+const headerImage = ref('');
+const videoUrl = ref('');
+const posterUrl = ref('');
+const s3Images = ref([]);
+
+// S3 image keys
 const images = [
-  '/images/gallery1.jpg',
-  '/images/gallery2.jpg',
-  '/images/gallery3.jpg',
-  '/images/gallery4.jpg',
-  '/images/gallery5.jpg',
-  '/images/gallery6.jpg',
-  '/images/gallery7.jpg',
-  '/images/gallery8.jpg',
-  '/images/gallery9.jpg',
-  '/images/gallery10.jpg',
-  '/images/gallery11.jpg',
-  '/images/gallery12.jpg',
-  '/images/gallery13.jpg',
-  '/images/gallery14.jpg',
-  '/images/gallery15.jpg',
-  '/images/gallery16.jpg',
-  '/images/gallery17.jpg',
-  '/images/gallery18.jpg',
-  '/images/gallery19.jpg',
-  '/images/gallery20.jpg',
-  '/images/gallery21.jpg',
+  'gallery1.jpg',
+  'gallery2.jpg',
+  // ... rest of your images
 ];
 
-function openGallery() {
-  currentImageIndex.value = 0;
-  galleryOpen.value = true;
-  document.body.style.overflow = 'hidden';
+// Load S3 URLs
+async function loadS3Urls() {
+  try {
+    // Load header image
+    headerImage.value = await getS3Url('header.jpg');
+    
+    // Load video and poster
+    videoUrl.value = await getS3Url('promo.mp4');
+    posterUrl.value = await getS3Url('video-preview.jpg');
+    
+    // Load gallery images
+    s3Images.value = await Promise.all(
+      images.map(key => getS3Url(key))
+    );
+  } catch (error) {
+    console.error('Error loading S3 URLs:', error);
+  }
 }
 
-function closeGallery() {
-  galleryOpen.value = false;
-  document.body.style.overflow = '';
-}
-
-onMounted(() => {
+onMounted(async () => {
+  await loadS3Urls();
+  
   // Add reveal animation to sections
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

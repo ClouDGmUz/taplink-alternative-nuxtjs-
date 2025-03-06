@@ -17,5 +17,13 @@ export default defineNuxtConfig({
   devServer: {
     host: '0.0.0.0',
     port: 3001
+  },
+  runtimeConfig: {
+    awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    public: {
+      awsRegion: process.env.AWS_REGION,
+      awsBucket: process.env.AWS_BUCKET_NAME
+    }
   }
 })
