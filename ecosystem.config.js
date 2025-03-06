@@ -1,21 +1,12 @@
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-export default {
+module.exports = {
   apps: [{
-    name: 'taplinknuxt',
+    name: 'nuxt-dev',
     script: 'npm',
-    args: 'run start',
-    cwd: __dirname,
-    watch: false,
+    args: 'run dev -- --host=dew.condoroil.uz --port=5173',
+    watch: true,
     autorestart: true,
     env: {
-      NODE_ENV: 'production',
-      PORT: 3001,
-      NITRO_PORT: 3001,
-      NUXT_PORT: 3001
+      NODE_ENV: 'development'
     }
   }]
-}
+};

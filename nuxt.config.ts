@@ -27,17 +27,18 @@ export default defineNuxtConfig({
 
   vite: {
     server: {
-      allowedHosts: [
-        '', // Your Domain Here
-        'localhost'
-      ]
+      hmr: {
+        protocol: 'wss',
+        host: '', // Replace with your server's hostname
+        port: 5173
+      }
     }
   },
 
   // Optional: also set Nuxt's dev server config
   devServer: {
     host: '0.0.0.0',
-    port: 3001
+    port: 5173
   },
   runtimeConfig: {
     awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
