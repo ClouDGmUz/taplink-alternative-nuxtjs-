@@ -27,5 +27,18 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ]
     }
-  }
+  },
+  vite: {
+    server: {
+      allowedHosts: [
+        'dew.condoroil.uz',  // Add your domain here
+        'localhost'
+      ],
+      hmr: {
+        protocol: 'wss',
+        host: 'dew.condoroil.uz',
+        port: 5173
+      }
+    }
+  },
 })
