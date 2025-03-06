@@ -8,32 +8,6 @@
         <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">DEW motor oil — avtomobillar uchun sifatli moylar ishlab chiqarish va sotishga ixtisoslashgan kompaniya. Mutaxassislarimiz avtomobilingiz dvigatelining ishonchli himoyasini taʼminlash uchun har bir detalga alohida eʼtibor qaratmoqda.</p>
       </div>
 
-      <!-- Expertise Section -->
-      <!-- <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-2 border-purple-100">
-        <h2 class="text-2xl font-semibold text-blue-900 mb-4">Bizni Nima Uchun Tanlash Kerak</h2>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col items-center p-3 bg-white/50 rounded-lg">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-              <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            </div>
-            <h3 class="font-medium text-blue-900">Sifat</h3>
-            <p class="text-sm text-center text-gray-600 mt-1">Premium darajadagi moylar</p>
-          </div>
-          <div class="flex flex-col items-center p-3 bg-white/50 rounded-lg">
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-2">
-              <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
-              </svg>
-            </div>
-            <h3 class="font-medium text-blue-900">Eng Yaxshi Narx</h3>
-            <p class="text-sm text-center text-gray-600 mt-1">Raqobatbardosh narxlar</p>
-          </div>
-        </div>
-      </div> -->
-
       <!-- Social Links -->
       <div class="space-y-4">
         <a href="https://t.me/avtomobil_moylari" target="_blank" 
@@ -77,7 +51,7 @@
     <!-- Gallery Lightbox -->
     <div v-if="galleryOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 transition-opacity duration-300" @click="closeGallery">
       <div class="relative max-w-4xl mx-auto p-4">
-        <img :src="images[currentImageIndex]" class="max-h-[90vh] w-auto rounded-lg shadow-2xl transform transition-transform duration-300" :class="{'scale-100': galleryOpen, 'scale-95': !galleryOpen}">
+        <img :src="`/images/${images[currentImageIndex]}`" class="max-h-[90vh] w-auto rounded-lg shadow-2xl transform transition-transform duration-300" :class="{'scale-100': galleryOpen, 'scale-95': !galleryOpen}">
         <button class="absolute top-4 right-4 text-white/80 hover:text-white transition-colors" @click="closeGallery">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -99,45 +73,44 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useS3 } from '~/composables/useS3';
 
-const { getS3Url } = useS3();
 const galleryOpen = ref(false);
 const currentImageIndex = ref(0);
-const headerImage = ref('');
-const videoUrl = ref('');
-const posterUrl = ref('');
-const s3Images = ref([]);
 
-// S3 image keys
+// Local image paths
 const images = [
   'gallery1.jpg',
   'gallery2.jpg',
-  // ... rest of your images
+  'gallery3.jpg',
+  'gallery4.jpg',
+  'gallery5.jpg',
+  'gallery6.jpg',
+  'gallery7.jpg',
+  'gallery8.jpg',
+  'gallery9.jpg',
+  'gallery10.jpg',
+  'gallery11.jpg',
+  'gallery12.jpg',
+  'gallery13.jpg',
+  'gallery14.jpg',
+  'gallery15.jpg',
+  'gallery16.jpg',
+  'gallery17.jpg',
+  'gallery18.jpg',
+  'gallery19.jpg',
+  'gallery20.jpg',
+  'gallery21.jpg'
 ];
 
-// Load S3 URLs
-async function loadS3Urls() {
-  try {
-    // Load header image
-    headerImage.value = await getS3Url('header.jpg');
-    
-    // Load video and poster
-    videoUrl.value = await getS3Url('promo.mp4');
-    posterUrl.value = await getS3Url('video-preview.jpg');
-    
-    // Load gallery images
-    s3Images.value = await Promise.all(
-      images.map(key => getS3Url(key))
-    );
-  } catch (error) {
-    console.error('Error loading S3 URLs:', error);
-  }
+function openGallery() {
+  galleryOpen.value = true;
 }
 
-onMounted(async () => {
-  await loadS3Urls();
-  
+function closeGallery() {
+  galleryOpen.value = false;
+}
+
+onMounted(() => {
   // Add reveal animation to sections
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
