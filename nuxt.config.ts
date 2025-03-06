@@ -30,7 +30,8 @@ export default defineNuxtConfig({
   vite: {
     server: {
       allowedHosts: [
-        'localhost'
+        'localhost',
+        'dew.condoroil.uz'
       ],
       hmr: {
         protocol: 'ws',
