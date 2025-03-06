@@ -6,13 +6,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default {
   apps: [{
     name: 'taplinknuxt',
-    script: './node_modules/nuxt/bin/nuxt.mjs',
-    args: 'start',
+    script: 'npm',
+    args: 'run start',
     cwd: __dirname,
     watch: false,
     autorestart: true,
     env: {
-      NODE_ENV: 'production'
+      NODE_ENV: 'production',
+      PORT: 3001,
+      NITRO_PORT: 3001,
+      NUXT_PORT: 3001
     }
   }]
 }
