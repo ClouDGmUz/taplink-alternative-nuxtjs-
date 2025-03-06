@@ -20,7 +20,9 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: 'DEW motor oil - Specializing in manufacturing and selling high-quality automotive oils. Our experts pay special attention to every detail to ensure reliable protection of your car engine. | DEW motor moyi - avtomobillar uchun sifatli moylar ishlab chiqarish va sotishga ixtisoslashgan kompaniya.' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        // Add this line to fix preload warning
+        { rel: 'preload', href: '/_nuxt/builds/meta/dev.json', as: 'fetch', crossorigin: 'anonymous' }
       ]
     }
   },
